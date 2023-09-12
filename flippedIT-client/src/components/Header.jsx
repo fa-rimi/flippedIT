@@ -1,40 +1,42 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-const Header = ({ onStartGame, clickCount, timer }) => {
+// Pages
+import Credit from "../pages/Credit"
+
+const Header = () => {
   return (
     <header>
       <div className="intro">
         <h1>flip IT</h1>
-        <p>flip the cards <br /> match the colors</p>
+        <p>
+          flip the cards <br /> match the colors
+        </p>
       </div>
       <div className="mode">
-        <button type="button" id="easy" onClick={() => onStartGame('easy')}>
+        <button type="button" id="easy">
           Easy
         </button>
-        <button type="button" id="medium" onClick={() => onStartGame('medium')}>
+        <button type="button" id="medium">
           Medium
         </button>
-        <button type="button" id="hard" onClick={() => onStartGame('hard')}>
+        <button type="button" id="hard">
           Hard
-        </button>
-        <button
-          type="button"
-          id="harder"
-          onClick={() => onStartGame('harder')}
-        >
-          Harder
         </button>
       </div>
       <div className="stats">
-        <div id="click-count">Click Count: {clickCount}</div>
-        <div id="timer">Time: {timer}</div>
+        <div id="click-count">Click Count:</div>
+        <div id="timer">Time:</div>
       </div>
       <div className="links">
         <a href="https://github.com/fa-rimi">
-          <img src="images/logos/icons8-github-48.png" alt="" />
+          <p>GitHub</p>
         </a>
-        <a href="credits/credit.html">credits</a>
+        <Routes>
+            <Route path="/flippedIT/credits" element={<Credit/>}/>
+        </Routes>
+        <a href="#">credits</a>
       </div>
     </header>
   );
