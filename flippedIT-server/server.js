@@ -1,23 +1,17 @@
 const express = require("express");
+const path = require("path");
 const app = express();
-const port = process.env.PORT || 3001; // Define the port for your server
 
-// Middleware: This example serves static files from a "public" directory.
-app.use(express.static("public"));
+// Serve static files from the 'dist' folder inside the 'flippedIT-client' directory
+const distPath = path.join(__dirname, "../flippedIT-client/dist");
+app.use(express.static(distPath));
 
-// ** Routes **
-
-/**
- * Sample Route
- */
-app.get("/", (req, res) => {
-  res.json({ message: "Hello, World!" });
-  console.log("And we are live!");
+// For all other requests, serve the 'index.html' file from the 'dist' folder
+app.get("*", (req, res) => {
+  res.sendFile(path.join(distPath, "index.html"));
 });
 
-/**
- * Server
- */
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
-  console.log(`Express server is running on localhost:${port}`);
+  console.log(`express server is running on localhost:${port}`);
 });
