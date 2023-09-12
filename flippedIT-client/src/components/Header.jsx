@@ -2,8 +2,14 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-// Pages
-import Credit from "../pages/Credit"
+// Import Pages
+import Credit from "../pages/Credit";
+
+// Import Components & Config
+import modes from "../config/modes";
+
+// Import Style
+import { buttonDimension } from "../assets/buttonStyles";
 
 const Header = () => {
   return (
@@ -15,15 +21,15 @@ const Header = () => {
         </p>
       </div>
       <div className="mode">
-        <button type="button" id="easy">
-          Easy
-        </button>
-        <button type="button" id="medium">
-          Medium
-        </button>
-        <button type="button" id="hard">
-          Hard
-        </button>
+        {modes.map((mode) => (
+          <button
+            key={mode.id}
+            type="button"
+            id={mode.id}
+            className={`${buttonDimension}`}>
+            {mode.label}
+          </button>
+        ))}
       </div>
       <div className="stats">
         <div id="click-count">Click Count:</div>
@@ -34,7 +40,7 @@ const Header = () => {
           <p>GitHub</p>
         </a>
         <Routes>
-            <Route path="/flippedIT/credits" element={<Credit/>}/>
+          <Route path="/flippedIT/credits" element={<Credit />} />
         </Routes>
         <a href="#">credits</a>
       </div>
