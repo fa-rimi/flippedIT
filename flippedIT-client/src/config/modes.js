@@ -3,7 +3,7 @@ const modes = [
       id: 'easy',
       label: 'Easy',
       rows: 2,
-      columns: 2,
+      cols: 2,
       message: "Easy mode activated"
     //   timeLimitInSeconds: 5,
     },
@@ -11,7 +11,7 @@ const modes = [
       id: 'medium',
       label: 'Medium',
       rows: 4,
-      columns: 4,
+      cols: 4,
       message: "Medium mode activated"
     //   timeLimitInSeconds: 60,
     },
@@ -19,7 +19,7 @@ const modes = [
       id: 'hard',
       label: 'Hard',
       rows: 6,
-      columns: 6,
+      cols: 6,
       message: "Hard mode activated"
     //   timeLimitInSeconds: 120,
     },
