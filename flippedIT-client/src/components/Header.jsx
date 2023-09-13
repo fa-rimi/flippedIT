@@ -9,24 +9,32 @@ import Credit from "../pages/Credit";
 import modes from "../config/modes";
 
 // Import Style
-import { buttonDimension } from "../assets/buttonStyles";
+import { buttonDimension, buttonLayout, buttonStyle, modeLayout } from "../assets/buttonStyles";
+import { headerContainer } from "../assets/appStyles";
 
 const Header = () => {
+  // Callback function to handle mode selection
+  const handleModeSelection = (selectedMode) => {
+    const { rows, cols, message } = selectedMode;
+    console.log(`Dimension: ${rows}x${cols} = ${message}`);
+  };
+
   return (
-    <header>
+    <header className={`${headerContainer}`}>
       <div className="intro">
         <h1>flip IT</h1>
         <p>
           flip the cards <br /> match the colors
         </p>
       </div>
-      <div className="mode">
+      <div className={`${modeLayout}`}>
         {modes.map((mode) => (
           <button
             key={mode.id}
             type="button"
             id={mode.id}
-            className={`${buttonDimension}`}>
+            className={`${buttonDimension} ${buttonStyle} ${buttonLayout}`}
+            onClick={() => handleModeSelection(mode)}>
             {mode.label}
           </button>
         ))}
